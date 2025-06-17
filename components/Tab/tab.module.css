@@ -1,0 +1,13 @@
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid black;
+  border-radius: 8px;
+  margin: 5px 0;
+  padding: 10px;
+}
+
+.tab img {
+  flex-shrink: 0;
+}
