@@ -1,4 +1,3 @@
-import Image from "next/image";
 import styles from "./page.module.css";
 import HandWave from "@/components/svg/hand-wave";
 
@@ -7,7 +6,7 @@ export default function Home() {
     <div className={styles.page}>
       <main className={styles.main}>
         <div>
-          <HandWave height="100px" width="100px" />
+          <HandWave height={100} width={100} />
           <h1>Hi, I'm Albert</h1>
         </div>
         <ol>
