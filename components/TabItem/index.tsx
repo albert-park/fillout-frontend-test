@@ -3,9 +3,9 @@ import Tab, { TabProps } from "../Tab";
 import styles from "./tabItem.module.css";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import Plus from "../svg/plus";
 
 interface TabItemProps extends TabProps {
-  id: string;
   index: number;
   handleHover: (index: number) => void;
   handleMouseLeave: (index: number | null) => void;
@@ -16,13 +16,13 @@ interface TabItemProps extends TabProps {
 const TabItem = ({
   index,
   id,
-  icon,
+  Icon,
   label,
-  isActive,
+  isActive = false,
   handleHover,
   handleMouseLeave,
   onMouseDown,
-  showAddTabButton
+  showAddTabButton = false
 }: TabItemProps) => {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id });
@@ -36,18 +36,22 @@ const TabItem = ({
       key={id}
       ref={setNodeRef}
       style={style}
-      {...attributes}
-      {...listeners}
       className={styles.tabItem}
       onClick={onMouseDown}
+      {...attributes}
+      {...listeners}
     >
-      <Tab id={id} icon={icon} label={label} isActive={isActive} />
+      <Tab id={id} Icon={Icon} label={label} isActive={isActive} />
       <div
         className={styles.addTab}
         onMouseEnter={() => handleHover(index)}
         onMouseLeave={() => handleMouseLeave(null)}
       >
-        {showAddTabButton && <div className={styles.addTabButton}>+</div>}
+        {showAddTabButton && (
+          <div className={styles.addTabButton}>
+            <Plus />
+          </div>
+        )}
       </div>
     </div>
   );

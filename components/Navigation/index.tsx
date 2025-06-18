@@ -1,7 +1,10 @@
 "use client";
+import { useState } from "react";
 import styles from "./navigation.module.css";
 import { TabProps } from "../Tab";
-import { useState } from "react";
+import TabItem from "../TabItem";
+import File from "../svg/file";
+
 import {
   closestCenter,
   DndContext,
@@ -11,13 +14,12 @@ import {
   useSensors
 } from "@dnd-kit/core";
 import { arrayMove, SortableContext } from "@dnd-kit/sortable";
-import TabItem from "../TabItem";
 
 const tabsData: TabProps[] = [
-  { id: "1", icon: "/file.svg", label: "Info" },
-  { id: "2", icon: "/file.svg", label: "Details" },
-  { id: "3", icon: "/file.svg", label: "Other" },
-  { id: "4", icon: "/file.svg", label: "Ending" }
+  { id: "1", Icon: File, label: "Info" },
+  { id: "2", Icon: File, label: "Details" },
+  { id: "3", Icon: File, label: "Other" },
+  { id: "4", Icon: File, label: "Ending" }
 ];
 
 const Navigation = () => {
@@ -33,25 +35,17 @@ const Navigation = () => {
     })
   );
 
-  const handleHover = (index: number) => {
-    setAddTabIndex(index);
-  };
-
-  const handleTabClick = (index: number) => {
-    setActiveTabIndex(index);
-  };
-
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
 
     if (!over) return;
 
     if (active.id !== over.id) {
-      setActiveTabIndex(tabs.findIndex((tab) => tab.id === over.id));
-      setTabs((items) => {
-        const oldIndex = items.findIndex((item) => item.id === active.id);
-        const newIndex = items.findIndex((item) => item.id === over.id);
+      const oldIndex = tabs.findIndex((tab) => tab.id === active.id);
+      const newIndex = tabs.findIndex((tab) => tab.id === over?.id);
 
+      setActiveTabIndex(newIndex);
+      setTabs((items) => {
         return arrayMove(items, oldIndex, newIndex);
       });
     }
@@ -66,7 +60,7 @@ const Navigation = () => {
       <footer className={styles.footer}>
         <SortableContext items={tabs}>
           {tabs.map((tab, index) => {
-            const { id, icon, label } = tab;
+            const { id, Icon, label } = tab;
             const isTabActive = index === activeTabIndex;
             const showAddTabButton = addTabIndex === index;
 
@@ -75,13 +69,13 @@ const Navigation = () => {
                 index={index}
                 key={id}
                 id={id}
-                icon={icon}
+                Icon={Icon}
                 label={label}
                 isActive={isTabActive}
-                handleHover={() => handleHover(index)}
+                handleHover={() => setAddTabIndex(index)}
                 handleMouseLeave={() => setAddTabIndex(null)}
                 onMouseDown={() => {
-                  handleTabClick(index);
+                  setActiveTabIndex(index);
                 }}
                 showAddTabButton={showAddTabButton}
               />

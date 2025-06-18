@@ -1,16 +1,20 @@
-import Image from "next/image";
+import React, { ComponentType, MemoExoticComponent } from "react";
 import styles from "./tab.module.css";
 
 export type TabProps = {
   id: string;
-  icon: string;
+  Icon: MemoExoticComponent<ComponentType<any>>;
   label: string;
   isActive?: boolean;
 };
 
-const Tab = ({ id, label, icon, isActive = false }: TabProps) => {
+const Tab = ({ id, label, Icon, isActive = false }: TabProps) => {
+  const activeFill = isActive ? " #F59D0E" : " #666666";
+
   const handleRightClick = (event: React.MouseEvent) => {
     event.preventDefault();
+
+    // pull right click menu logic here
     console.log("Right click on tab:", label);
   };
 
@@ -20,7 +24,7 @@ const Tab = ({ id, label, icon, isActive = false }: TabProps) => {
       className={`${styles.tab} ${isActive && styles.active}`}
       onContextMenu={handleRightClick}
     >
-      <Image aria-hidden src={icon} alt="File icon" width={16} height={16} />
+      <Icon width={16} height={16} fill={activeFill} />
       {label}
     </div>
   );

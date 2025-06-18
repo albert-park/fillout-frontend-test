@@ -1,10 +1,10 @@
 .footer {
   grid-row-start: 3;
   display: flex;
-  background: var(--foreground);
+  background: #f9fafb;
   color: var(--background);
-  height: 75px;
-  padding: 0 20px;
+  height: 72px;
+  padding: 20px;
 }
 
 .footer a {

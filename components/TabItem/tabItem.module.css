@@ -1,26 +1,28 @@
 .tabItem {
   display: flex;
   align-items: center;
-  height: 100%;
-  min-width: 20px;
   width: fit-content;
 }
 
 .addTab {
   height: 100%;
-  min-width: 20px;
+  min-width: 32px;
   width: 0;
-  transition: width 0.3s ease;
+  transition: all 0.5s linear;
   display: flex;
   align-items: center;
 }
 
 .addTab:hover {
-  width: fit-content;
+  align-self: baseline;
+  background: var(--brand-accent);
+  border-radius: var(--border-radius);
   cursor: pointer;
+  width: 100%;
 }
 
 .addTabButton {
+  align-self: baseline;
   padding: 5px;
-  margin: 0 15px;
+  margin: 0 10px;
 }
