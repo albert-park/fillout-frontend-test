@@ -1,6 +1,6 @@
 .menu {
   position: absolute;
-  bottom: 60;
+  bottom: 60px;
   z-index: 1000;
   height: 257px;
   width: 240px;
