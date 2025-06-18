@@ -1,11 +1,14 @@
 import { memo } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 export type SVGProps = {
-  width?: string;
-  height?: string;
+  width?: number;
+  height?: number;
+  fill?: string;
 };
 
-const HandWave = memo(({ width = "16px", height = "16px" }: SVGProps) => {
+const HandWave = memo(({ width = 16, height = 16 }: SVGProps) => {
+  const handWaveId = uuidv4();
   return (
     <svg
       width={width}
@@ -13,6 +16,7 @@ const HandWave = memo(({ width = "16px", height = "16px" }: SVGProps) => {
       viewBox="0 0 80 80"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      aria-labelledby={handWaveId}
     >
       <path
         d="M44.897 37.322c.835.921 1.582 2.126 1.264 2.444-.319.319-1.294-.258-2.04-1.005-.748-.747-2.53 7.187-2.703 7.59-.127.302-2.206 2.678-3.292 4.943-.36.756-.31 3.03-.446 3.166-.547.547-1.234.488-2.732-.836-1.493-1.324-2.27 6.547-.488 7.79 3.046 2.125 9.143 10.582 17.19 10.582 9.312 0 17.937-9.717 17.937-16.849 0-7.128-2.092-9.835-1.956-15.813.115-5.062 3.793-7.476 3.793-10.005 0-2.126-3.16-2.643-4.196-2.643-1.841 0-6.554 2.359-6.554 8.566 0 2.414-.692 4.6-3.16 4.6-2.47 0-5.232-3.395-6.899-6.038"
