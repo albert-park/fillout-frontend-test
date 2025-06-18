@@ -2,10 +2,24 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  border: 1px solid black;
   border-radius: 8px;
-  margin: 5px 0;
-  padding: 10px;
+  margin: 20px 0;
+  padding: 5px 20px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.tab:hover {
+  cursor: pointer;
+  background-color: var(--foreground);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.active {
+  background-color: var(--foreground);
+  color: var(--background);
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .tab img {

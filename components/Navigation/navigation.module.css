@@ -3,8 +3,8 @@
   display: flex;
   background: var(--foreground);
   color: var(--background);
-  height: 50px;
-  padding: 0 10px;
+  height: 75px;
+  padding: 0 20px;
 }
 
 .footer a {
@@ -15,17 +15,4 @@
 
 .footer img {
   flex-shrink: 0;
-}
-
-.addTab {
-  height: 100%;
-  min-width: 20px;
-  width: 0;
-  transition: width 0.3s ease;
-  display: flex;
-  align-items: center;
-}
-
-.addTab:hover {
-  width: fit-content;
 }

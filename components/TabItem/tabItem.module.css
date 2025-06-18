@@ -1,0 +1,26 @@
+.tabItem {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  min-width: 20px;
+  width: fit-content;
+}
+
+.addTab {
+  height: 100%;
+  min-width: 20px;
+  width: 0;
+  transition: width 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.addTab:hover {
+  width: fit-content;
+  cursor: pointer;
+}
+
+.addTabButton {
+  padding: 5px;
+  margin: 0 15px;
+}
