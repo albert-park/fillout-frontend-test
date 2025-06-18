@@ -1,6 +1,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-size-primary: 14px;
+  --border-radius: 8px;
+  --brand-accent: #f59d0e;
 }
 
 @media (prefers-color-scheme: dark) {
