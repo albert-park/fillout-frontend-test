@@ -1,9 +1,9 @@
 "use client";
 import { useState } from "react";
 import styles from "./navigation.module.css";
-import { TabProps } from "../Tab";
 import TabItem from "../TabItem";
-import File from "../svg/file";
+
+import { tabsData } from "../../tools/data";
 
 import {
   closestCenter,
@@ -14,16 +14,10 @@ import {
   useSensors
 } from "@dnd-kit/core";
 import { arrayMove, SortableContext } from "@dnd-kit/sortable";
-
-const tabsData: TabProps[] = [
-  { id: "1", Icon: File, label: "Info" },
-  { id: "2", Icon: File, label: "Details" },
-  { id: "3", Icon: File, label: "Other" },
-  { id: "4", Icon: File, label: "Ending" }
-];
+import { TabProps } from "../Tab";
 
 const Navigation = () => {
-  const [tabs, setTabs] = useState(tabsData);
+  const [tabs, setTabs] = useState<TabProps[]>(tabsData);
   const [activeTabIndex, setActiveTabIndex] = useState<number>(0);
   const [addTabIndex, setAddTabIndex] = useState<number | null>(null);
 
@@ -72,12 +66,14 @@ const Navigation = () => {
                 Icon={Icon}
                 label={label}
                 isActive={isTabActive}
-                handleHover={() => setAddTabIndex(index)}
-                handleMouseLeave={() => setAddTabIndex(null)}
+                handleHover={setAddTabIndex}
+                handleMouseLeave={setAddTabIndex}
                 onMouseDown={() => {
                   setActiveTabIndex(index);
                 }}
                 showAddTabButton={showAddTabButton}
+                setTabs={setTabs}
+                tabs={tabs}
               />
             );
           })}
